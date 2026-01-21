@@ -3,8 +3,14 @@ from fastapi import FastAPI;
 # Import Routers
 from app.routes.issues import router as issues_router
 
+# Import Middleware
+from app.middleware.timer import timer_middleware
+
 # Create FastAPI instance
 app = FastAPI()
+
+# Add Middleware
+app.middleware("http")(timer_middleware)
 
 
 # Define a root endpoint
